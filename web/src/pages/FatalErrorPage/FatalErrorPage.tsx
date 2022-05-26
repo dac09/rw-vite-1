@@ -9,9 +9,13 @@
 
 // Ensures that production builds do not include the error page
 let RedwoodDevFatalErrorPage = undefined
+
+// @MARK cannot seem to require in here
+// Probably because vite in dev mode uses esm, so we'd noeed to do something different
+
 if (process.env.NODE_ENV === 'development') {
   RedwoodDevFatalErrorPage =
-    require('@redwoodjs/web/dist/components/DevFatalErrorPage').DevFatalErrorPage
+    import('@redwoodjs/web/dist/components/DevFatalErrorPage').DevFatalErrorPage
 }
 
 export default RedwoodDevFatalErrorPage ||
