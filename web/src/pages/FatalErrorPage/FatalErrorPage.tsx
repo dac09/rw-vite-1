@@ -14,8 +14,11 @@ let RedwoodDevFatalErrorPage = undefined
 // Probably because vite in dev mode uses esm, so we'd noeed to do something different
 
 if (process.env.NODE_ENV === 'development') {
-  RedwoodDevFatalErrorPage =
-    import('@redwoodjs/web/dist/components/DevFatalErrorPage').DevFatalErrorPage
+  const { DevFatalErrorPage } = await import(
+    '@redwoodjs/web/dist/components/DevFatalErrorPage'
+  )
+
+  RedwoodDevFatalErrorPage = DevFatalErrorPage
 }
 
 export default RedwoodDevFatalErrorPage ||

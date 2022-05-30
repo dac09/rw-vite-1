@@ -2124,6 +2124,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@esbuild-plugins/node-globals-polyfill@npm:^0.1.1":
+  version: 0.1.1
+  resolution: "@esbuild-plugins/node-globals-polyfill@npm:0.1.1"
+  peerDependencies:
+    esbuild: "*"
+  checksum: 49ec2162dc06eeb5bd1d5bf04cfae947ff2dbedad59e8ae7c02649573d66b1ca09526705b24597689689ec1a4430b13d40b5a94d9ee0531dcc83943ee7b1b7dd
+  languageName: node
+  linkType: hard
+
 "@eslint/eslintrc@npm:^1.2.3, @eslint/eslintrc@npm:^1.3.0":
   version: 1.3.0
   resolution: "@eslint/eslintrc@npm:1.3.0"
@@ -22420,6 +22429,7 @@ __metadata:
     "@envelop/filter-operation-type": 3.3.2
     "@envelop/parser-cache": 4.3.2
     "@envelop/validation-cache": 4.3.2
+    "@esbuild-plugins/node-globals-polyfill": ^0.1.1
     "@fastify/http-proxy": 7.1.0
     "@fastify/static": 5.0.2
     "@fastify/url-data": 4.0.0

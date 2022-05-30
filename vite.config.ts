@@ -1,11 +1,17 @@
-import { defineConfig } from "vite";
-import react from "@vitejs/plugin-react";
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
 // import viteFastify from "fastify-vite/plugin";
 
-import {getWebSideDefaultBabelConfig, getPaths, getConfig} from '@redwoodjs/internal'
+import { NodeGlobalsPolyfillPlugin } from '@esbuild-plugins/node-globals-polyfill'
 
-import type { UserConfig } from "vite";
-import path from "path";
+import {
+  getWebSideDefaultBabelConfig,
+  getPaths,
+  getConfig,
+} from '@redwoodjs/internal'
+
+import type { UserConfig } from 'vite'
+import path from 'path'
 
 const redwoodConfig = getConfig()
 const redwoodPaths = getPaths()
@@ -13,25 +19,24 @@ const rwBabelConfig = getWebSideDefaultBabelConfig()
 
 const viteConfig: UserConfig = {
   // @MARK so we can put stuff in the web folder
-  root: "web",
+  root: 'web',
   resolve: {
     alias: {
-      'src': getPaths().web.src,
+      src: getPaths().web.src,
     },
   },
- plugins: [
+  plugins: [
     react({
       babel: {
-        ...rwBabelConfig
-      }
+        ...rwBabelConfig,
+      },
     }),
     // viteFastify()
   ],
   // @MARK: try to customise tailwind/postcss config path. Ignores "root"
   css: {
-    postcss: "./web/config/",
+    postcss: './web/config/',
   },
-
   server: {
     proxy: {
       //@MARK we need to do a check for absolute urls here
@@ -44,10 +49,9 @@ const viteConfig: UserConfig = {
     },
   },
   define: {
-    // @MARK we only do this because of how we loaded stuff using webpack
-    // We can probably remove this, and just change how we assign it in
-    // redwood/packages/web/src/config.ts
-    'process.env': {
+    // @MARK instead of using process.env, we use RWJS_GLOBALS
+    // This is because it seems to interfere with the node polyfills in esbuildOptions
+    RWJS_GLOBALS: {
       RWJS_API_GRAPHQL_URL:
         redwoodConfig.web.apiGraphQLUrl ??
         redwoodConfig.web.apiUrl + '/graphql',
@@ -58,6 +62,20 @@ const viteConfig: UserConfig = {
         redwoodConfig.web.title || path.basename(redwoodPaths.base),
     },
   },
-};
+  optimizeDeps: {
+    esbuildOptions: {
+      // Node.js global to browser globalThis
+      define: {
+        global: 'globalThis',
+      },
+      // Enable esbuild polyfill plugins
+      plugins: [
+        NodeGlobalsPolyfillPlugin({
+          buffer: true,
+        }),
+      ],
+    },
+  },
+}
 
-export default defineConfig(viteConfig);
+export default defineConfig(viteConfig)
