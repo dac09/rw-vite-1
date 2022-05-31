@@ -1,6 +1,9 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
-// import viteFastify from "fastify-vite/plugin";
+
+import viteFastify from 'fastify-vite/plugin'
+
+import { viteCommonjs } from '@originjs/vite-plugin-commonjs'
 
 import { NodeGlobalsPolyfillPlugin } from '@esbuild-plugins/node-globals-polyfill'
 
@@ -31,7 +34,9 @@ const viteConfig: UserConfig = {
         ...rwBabelConfig,
       },
     }),
-    // viteFastify()
+    // @MARK SAD, but need it to require routes for the loader
+    viteCommonjs(),
+    viteFastify(),
   ],
   // @MARK: try to customise tailwind/postcss config path. Ignores "root"
   css: {

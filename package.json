@@ -9,10 +9,11 @@
   },
   "devDependencies": {
     "@esbuild-plugins/node-globals-polyfill": "^0.1.1",
+    "@originjs/vite-plugin-commonjs": "^1.0.3",
     "@redwoodjs/core": "1.5.1",
     "@vitejs/plugin-react": "^1.0.7",
     "devalue": "^2.0.1",
-    "fastify-vite": "^3.0.0-beta.22",
+    "fastify-vite": "3.0.0-beta.22",
     "vite": "^2.7.2"
   },
   "eslintConfig": {

@@ -1,6 +1,6 @@
 import ReactDOM from 'react-dom'
 
-import App from './App'
+import { createApp } from './App'
 /**
  * When `#redwood-app` isn't empty then it's very likely that you're using
  * prerendering. So React attaches event listeners to the existing markup
@@ -9,8 +9,4 @@ import App from './App'
  */
 const rootElement = document.getElementById('redwood-app')
 
-if (rootElement.children?.length > 0) {
-  ReactDOM.hydrate(<App />, rootElement)
-} else {
-  ReactDOM.render(<App />, rootElement)
-}
+ReactDOM.hydrate(createApp(window.hydration), rootElement)
