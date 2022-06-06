@@ -24,11 +24,16 @@ const App = () => (
 )
 
 export const createApp = (ctx, url) => {
+  if (!url) {
+    return <App />
+  }
+
   return (
     <LocationProvider
       location={{
         pathname: url,
       }}
+      mode="static"
     >
       <App />
     </LocationProvider>
