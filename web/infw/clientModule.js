@@ -36,6 +36,9 @@ export default {
     {
       path: '/contact',
     },
+    {
+      path: '/404',
+    },
   ],
   createApp,
 }

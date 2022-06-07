@@ -15,6 +15,7 @@ function createRenderFunction({ createApp }) {
     // Server data that we want to be used for SSR
     // and made available on the client for hydration
     const data = {
+      // tobbe's cell data
       count: 100,
     }
 

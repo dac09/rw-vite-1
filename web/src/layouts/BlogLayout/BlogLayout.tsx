@@ -6,7 +6,6 @@ import { Link, routes } from '@redwoodjs/router'
 import { useAuth } from '@redwoodjs/auth'
 
 const BlogLayout = ({ children }: BlogLayoutProps) => {
-  console.log(`🗯 \n ~ file: BlogLayout.tsx ~ line 9 ~ children`, children)
   const { logOut, isAuthenticated } = useAuth()
 
   return (

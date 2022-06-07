@@ -10,9 +10,9 @@ const server = Fastify()
 // Raise a bug for this
 globalThis.RWJS_GLOBALS = {}
 
-globalThis.__REDWOOD__PRERENDERING = true
+// globalThis.__REDWOOD__PRERENDERING = true
 
-process.env.RW_ROUTER_USE_STATIC_IMPORTS = '1'
+// process.env.RWJS_ROUTES_USE_STATIC_IMPORTS = '1'
 
 // Note that FastifyVite's root setting is different to Vite's root setting
 const root = rwInternal.getPaths().base
