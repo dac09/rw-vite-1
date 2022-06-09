@@ -8,8 +8,8 @@ import Routes from './Routes'
 
 import { LocationProvider } from '@redwoodjs/router'
 
-import './scaffold.css'
-import './index.css'
+// @MARK
+// Removed CSS imports, put it in index.html
 
 const App = () => (
   <FatalErrorBoundary page={FatalErrorPage}>
