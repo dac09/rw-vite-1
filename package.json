@@ -29,7 +29,10 @@
   },
   "packageManager": "yarn@3.2.1",
   "scripts": {
-    "postinstall": "yarn rwfw project:copy"
+    "postinstall": "yarn rwfw project:copy",
+    "dev:nossr": "yarn rw dev",
+    "dev:fastify": "concurrently \"yarn rw dev api\" \"yarn node web/infw/server.mjs --dev\"",
+    "dev:ssr": "concurrently \"yarn rw dev api\" \"yarn node customVite/server.js\""
   },
   "dependencies": {
     "@apollo/client": "3.6.5",
