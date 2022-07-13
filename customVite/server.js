@@ -36,6 +36,10 @@ async function createServer() {
       //    from @vitejs/plugin-react
       template = await vite.transformIndexHtml(url, template)
 
+      // @MARK: using virtual modules here, so we can actually find the chunk we need! 🤯
+      const routes = await vite.ssrLoadModule('virtual:redwood-routes')
+      console.log(`🗯 \n ~ file: server.js ~ line 40 ~ routes`, routes)
+
       // 3. Load the server entry. vite.ssrLoadModule automatically transforms
       //    your ESM source code to be usable in Node.js! There is no bundling
       //    required, and provides efficient invalidation similar to HMR.

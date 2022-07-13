@@ -1,9 +1,10 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 
+// Vite plugins
 import viteFastify from 'fastify-vite/plugin'
-
 import { viteCommonjs } from '@originjs/vite-plugin-commonjs'
+import redwoodVirtualRoutes from './vite-plugin-redwood/routes-virtual'
 
 import { NodeGlobalsPolyfillPlugin } from '@esbuild-plugins/node-globals-polyfill'
 
@@ -37,6 +38,7 @@ const viteConfig: UserConfig = {
     // @MARK SAD, but need it to require routes for the loader
     viteCommonjs(),
     viteFastify(),
+    redwoodVirtualRoutes(),
   ],
   // @MARK: try to customise tailwind/postcss config path. Ignores "root"
   css: {

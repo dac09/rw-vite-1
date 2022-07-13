@@ -31,8 +31,9 @@
   "scripts": {
     "postinstall": "yarn rwfw project:copy",
     "dev:nossr": "yarn rw dev",
-    "dev:fastify": "concurrently \"yarn rw dev api\" \"yarn node web/infw/server.mjs --dev\"",
-    "dev:ssr": "concurrently \"yarn rw dev api\" \"yarn node customVite/server.js\""
+    "dev:fastify": "concurrently -n api,viteServer  \"yarn rw dev api\" \"yarn node web/infw/server.mjs --dev\"",
+    "dev:ssr": "concurrently -n api,viteServer \"yarn rw dev api\" \"yarn node customVite/server.js\"",
+    "build:vite": "yarn vite build"
   },
   "dependencies": {
     "@apollo/client": "3.6.5",
