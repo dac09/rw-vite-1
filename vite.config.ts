@@ -53,6 +53,11 @@ const viteConfig: UserConfig = {
       },
     },
   },
+  // @MARK generate the build manifest so we can
+  // see the chunks that are dynamically loaded
+  build: {
+    manifest: true,
+  },
   define: {
     // @MARK instead of using process.env, we use RWJS_GLOBALS
     // This is because it seems to interfere with the node polyfills in esbuildOptions
